@@ -6,7 +6,7 @@ const path = require('path');
 async function main() {
   try {
     // Đọc địa chỉ USDT từ file config
-    const configPath = path.join(__dirname, '../../web/src/config/contracts.js');
+    const configPath = path.join(__dirname, '../../web/src/config/BNBcontracts.js');
     const configContent = fs.readFileSync(configPath, 'utf8');
 
     // Tìm USDT_ADDRESS trong config
@@ -17,7 +17,7 @@ async function main() {
     const USDT_ADDRESS = usdtAddressMatch[1];
 
     // Địa chỉ ví nhận USDT (thay bằng địa chỉ ví của bạn)
-    const WALLET_ADDRESS = "0xB24BA6c8aD23BA5c0936880b3f430a0C96d4f3B5";
+    const WALLET_ADDRESS = "0xc64e451c1F0543Fff62d76Ec6B62947D3a753781";
 
     console.log("USDT Contract Address:", USDT_ADDRESS);
     console.log("Wallet Address:", WALLET_ADDRESS);

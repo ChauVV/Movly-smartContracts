@@ -30,8 +30,8 @@ async function updateConfigFiles(addresses) {
   const contractsJsContent = fs.readFileSync(contractsJsPath, 'utf8');
   const updatedContractsJs = contractsJsContent
     .replace(/DEPLOYER_ADDRESS = ".*"/, `DEPLOYER_ADDRESS = "${addresses.TokenDeployer}"`)
-    .replace(/HST_ADDRESS = ".*"/, `HST_ADDRESS = "${addresses.Movly}"`)
-    .replace(/HSE_ADDRESS = ".*"/, `HSE_ADDRESS = "${addresses.MGD}"`);
+    .replace(/MOVLY_ADDRESS  = ".*"/, `MOVLY_ADDRESS  = "${addresses.Movly}"`)
+    .replace(/MGD_ADDRESS  = ".*"/, `MGD_ADDRESS  = "${addresses.MGD}"`);
   fs.writeFileSync(contractsJsPath, updatedContractsJs);
   console.log('Updated BNBcontracts.js');
 }
