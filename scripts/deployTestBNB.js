@@ -11,9 +11,7 @@ const MARKETING_WALLET = "0x87e5504fc3faa90d50d03949d4c7e22dab46c92b";
 
 // BSC Testnet Addresses
 const BNB_USD_FEED = "0x2514895c72f50D8bd4B4F9b1110F0D6bD2c97526";
-const ETH_USD_FEED = "0x143db3CEEfbdfe5631aDD3E50f7614B6ba708BA7";
 const USDT = "0x337610d27c682E347C9cD60BD4b3b107C9d34dDd";
-const WBNB = "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd";
 
 async function updateConfigFiles(addresses) {
   // 1. Update bscTestnet.json
@@ -32,8 +30,8 @@ async function updateConfigFiles(addresses) {
   const contractsJsContent = fs.readFileSync(contractsJsPath, 'utf8');
   const updatedContractsJs = contractsJsContent
     .replace(/DEPLOYER_ADDRESS = ".*"/, `DEPLOYER_ADDRESS = "${addresses.TokenDeployer}"`)
-    .replace(/HST_ADDRESS = ".*"/, `HST_ADDRESS = "${addresses.HST}"`)
-    .replace(/HSE_ADDRESS = ".*"/, `HSE_ADDRESS = "${addresses.HSE}"`);
+    .replace(/HST_ADDRESS = ".*"/, `HST_ADDRESS = "${addresses.Movly}"`)
+    .replace(/HSE_ADDRESS = ".*"/, `HSE_ADDRESS = "${addresses.MGD}"`);
   fs.writeFileSync(contractsJsPath, updatedContractsJs);
   console.log('Updated BNBcontracts.js');
 }
@@ -70,11 +68,11 @@ async function main() {
     // Deploy TokenDeployer
     console.log("\n📄 Deploying TokenDeployer...");
     const TokenDeployer = await ethers.getContractFactory("TokenDeployer");
+
+    // Update constructor parameters to match contract's constructor
     const tokenDeployer = await TokenDeployer.deploy(
       BNB_USD_FEED,
-      ETH_USD_FEED,
       USDT,
-      WBNB,
       TEAM_WALLET,
       ADVISOR_WALLET,
       ECOSYSTEM_WALLET,
@@ -89,12 +87,12 @@ async function main() {
     await deployTx.wait();
 
     // Get và show token addresses
-    const hstAddress = await tokenDeployer.hst();
-    const hseAddress = await tokenDeployer.hse();
+    const movlyAddress = await tokenDeployer.movly();
+    const mgdAddress = await tokenDeployer.mgd();
     console.log("\n📍 Contract Addresses:");
     console.log("TokenDeployer:", tokenDeployer.target);
-    console.log("HST:", hstAddress);
-    console.log("HSE:", hseAddress);
+    console.log("Movly:", movlyAddress);
+    console.log("MGD:", mgdAddress);
 
     // Verify wallet settings
     console.log("\n👥 Wallet Addresses:");
@@ -106,8 +104,8 @@ async function main() {
     // Update config files
     const addresses = {
       TokenDeployer: tokenDeployer.target,
-      HST: hstAddress,
-      HSE: hseAddress
+      Movly: movlyAddress,
+      MGD: mgdAddress
     };
     await updateConfigFiles(addresses);
     console.log("\n✅ All configuration files have been updated!");
@@ -115,9 +113,7 @@ async function main() {
     // Verify contracts
     await verifyContract(tokenDeployer.target, [
       BNB_USD_FEED,
-      ETH_USD_FEED,
       USDT,
-      WBNB,
       TEAM_WALLET,
       ADVISOR_WALLET,
       ECOSYSTEM_WALLET,
