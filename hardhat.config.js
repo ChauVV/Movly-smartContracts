@@ -34,6 +34,12 @@ module.exports = {
       chainId: 97,
       accounts: [process.env.PRIVATE_KEY || ""],
       gasPrice: 20000000000 // 20 gwei
+    },
+    bscMainnet: {
+      url: "https://bsc-dataseed1.binance.org/",
+      chainId: 56,
+      accounts: [process.env.PRIVATE_KEY],
+      gasPrice: 5000000000 // 5 gwei
     }
   },
   etherscan: {

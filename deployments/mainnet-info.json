@@ -1,0 +1,24 @@
+{
+  "network": "BSC Mainnet",
+  "timestamp": "2025-03-22T11:36:51.480Z",
+  "deployer": "0xc64e451c1F0543Fff62d76Ec6B62947D3a753781",
+  "addresses": {
+    "TokenDeployer": "0xAc3c5EdA096617a4871D1d0F7f46423b818f6581",
+    "Movly": "0xb7C8969df0076bEe6922789AaB4bC73aAa8d45D2",
+    "MGD": "0x3d223ae97AA30f3b7dA4Be5b1F8a68749c37C289"
+  },
+  "wallets": {
+    "team": "0x20be21a9a707d077fa78ac41b4fdbe511e20a8c7",
+    "advisor": "0x180434fe12c81eda170c458d6557bb1ee2d8315b",
+    "ecosystem": "0x6b914426d873277001dbd0de24a7dd3bfcec4e32",
+    "marketing": "0x87e5504fc3faa90d50d03949d4c7e22dab46c92b"
+  },
+  "constructorArguments": [
+    "0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE",
+    "0x55d398326f99059fF775485246999027B3197955",
+    "0x20be21a9a707d077fa78ac41b4fdbe511e20a8c7",
+    "0x180434fe12c81eda170c458d6557bb1ee2d8315b",
+    "0x6b914426d873277001dbd0de24a7dd3bfcec4e32",
+    "0x87e5504fc3faa90d50d03949d4c7e22dab46c92b"
+  ]
+}
