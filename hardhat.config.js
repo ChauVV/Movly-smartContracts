@@ -44,7 +44,8 @@ module.exports = {
   },
   etherscan: {
     apiKey: {
-      bscTestnet: "FZ6DMVYGF3W75PDGDZ4I9SVCBV6JP8D5UZ"
+      bscTestnet: "FZ6DMVYGF3W75PDGDZ4I9SVCBV6JP8D5UZ",
+      bsc: "FZ6DMVYGF3W75PDGDZ4I9SVCBV6JP8D5UZ"
     }
   }
 }; 
