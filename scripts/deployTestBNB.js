@@ -26,7 +26,7 @@ async function updateConfigFiles(addresses) {
   console.log('Updated bscTestnet.json');
 
   // 2. Update BNBcontracts.js
-  const contractsJsPath = path.join(__dirname, '../../web/src/config/BNBcontracts.js');
+  const contractsJsPath = path.join(__dirname, '../../web/src/config/BNBTestContracts.js');
   const contractsJsContent = fs.readFileSync(contractsJsPath, 'utf8');
   const updatedContractsJs = contractsJsContent
     .replace(/DEPLOYER_ADDRESS = ".*"/, `DEPLOYER_ADDRESS = "${addresses.TokenDeployer}"`)
